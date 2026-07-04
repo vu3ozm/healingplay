@@ -1,0 +1,1134 @@
+/* ==========================================================================
+   The Healing Play - styles.css
+   All values come from tokens.css custom properties. Never hardcode a
+   color, font, size, space, or radius here - add a token first if one
+   is missing (tokens.css is generated from brand-direction.md).
+
+   Contents:
+     === BASE ===
+     === UTILITIES ===
+     === BUTTONS ===
+     === HEADER / NAV ===
+     === SECTION SHELL ===
+     === FOOTER ===
+     === REDUCED MOTION ===
+   ========================================================================== */
+
+
+/* === BASE === */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Keep anchored sections clear of the sticky header on jump/scroll. */
+  scroll-padding-top: var(--space-12);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  color: var(--color-ink);
+  background-color: var(--color-bg);
+}
+
+h1, h2, h3, h4, p, ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Accent display words inside headlines (brand-direction.md §3):
+   1–2 words max, never body text, buttons, or navigation. */
+.accent {
+  font-family: var(--font-accent);
+  font-weight: var(--weight-regular);
+}
+
+
+/* === UTILITIES === */
+
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: var(--container-pad-lg);
+  }
+}
+
+/* Visually hidden but available to screen readers. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* === BUTTONS === */
+
+.btn {
+  display: inline-block;
+  padding: var(--space-2) var(--space-4);
+  border: 0;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-weight: var(--weight-medium);
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+/* Primary: petal pink fill + ink text; hover flips to tangerine + near-white
+   (the signature transition from brand-direction.md §2, rule 2). */
+.btn--primary {
+  background-color: var(--color-primary);
+  color: var(--color-ink);
+}
+
+.btn--primary:hover,
+.btn--primary:focus-visible {
+  background-color: var(--color-accent);
+  color: var(--neutral-0);
+}
+
+
+/* === HEADER / NAV === */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-block: var(--space-2);
+}
+
+.nav__logo {
+  font-size: var(--text-h4);
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+}
+
+/* Mobile toggle (hidden on desktop) */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-half);
+  padding: var(--space-1);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.nav__toggle-bar {
+  width: var(--space-3);
+  height: 2px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-ink);
+  transition: var(--transition-base);
+}
+
+.nav__menu {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.nav__link {
+  font-size: var(--text-body);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+.nav__link:hover,
+.nav__link:focus-visible {
+  color: var(--color-accent);
+}
+
+@media (max-width: 767px) {
+  .nav__toggle {
+    display: flex;
+  }
+
+  .nav__menu {
+    /* Collapsed by default; .is-open (set in main.js) reveals it as a
+       full-width panel under the header bar. */
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-card);
+  }
+
+  .nav__menu.is-open {
+    display: flex;
+  }
+
+  .nav__links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-2);
+  }
+
+  .nav__link {
+    display: block;
+    padding: var(--space-1) 0;
+  }
+
+  .nav__cta {
+    text-align: center;
+  }
+
+  /* Toggle morphs to an X when open. */
+  .nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+}
+
+
+/* === SECTION SHELL === */
+
+/* Shared vertical rhythm for all page sections (brand-direction.md §4).
+   Individual section styles are added in later passes under their own
+   banners; background alternation (mint / periwinkle bands) is applied
+   per-section then. */
+main > section {
+  padding-block: var(--section-pad-y);
+}
+
+@media (min-width: 1024px) {
+  main > section {
+    padding-block: var(--section-pad-y-lg);
+  }
+}
+
+/* Shared centered section heading. Accent words inside default to tangerine;
+   a section may override .accent color locally. */
+.section-title {
+  font-size: var(--text-h2);
+  line-height: var(--leading-h2);
+  font-weight: var(--weight-bold);
+  text-align: center;
+  max-width: 24ch;
+  margin-inline: auto;
+}
+
+.section-title .accent {
+  color: var(--color-accent);
+}
+
+
+/* === HERO === (Section 1) */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding-block: var(--space-12);
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    padding-block: var(--space-16);
+  }
+}
+
+/* Soft pastel shapes behind the content - decorative "pastel with punch". */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: var(--radius-circle);
+  z-index: 0;
+}
+
+.hero::before {
+  width: 340px;
+  height: 340px;
+  background-color: var(--color-secondary);
+  top: calc(-1 * var(--space-16));
+  left: calc(-1 * var(--space-12));
+}
+
+.hero::after {
+  width: 280px;
+  height: 280px;
+  background-color: var(--color-secondary-2);
+  bottom: calc(-1 * var(--space-16));
+  right: calc(-1 * var(--space-8));
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.hero__badge {
+  display: inline-block;
+  background-color: var(--color-secondary);
+  color: var(--color-ink);
+  font-size: var(--text-small);
+  font-weight: var(--weight-bold);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-4);
+}
+
+.hero__title {
+  font-size: var(--text-display);
+  line-height: var(--leading-display);
+  font-weight: var(--weight-bold);
+  max-width: 16ch;
+  margin-inline: auto;
+}
+
+.hero__title .accent {
+  color: var(--color-accent);
+}
+
+.hero__subtitle {
+  font-size: var(--text-h4);
+  line-height: var(--leading-body);
+  color: var(--color-muted);
+  max-width: 54ch;
+  margin: var(--space-4) auto var(--space-6);
+}
+
+
+/* === CONCERNS === (Section 2) */
+
+.concerns {
+  background-color: var(--color-secondary);
+}
+
+.concern-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 640px) {
+  .concern-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .concern-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.concern-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-card);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-base);
+}
+
+.concern-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.concern-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-8);
+  height: var(--space-8);
+  border-radius: var(--radius-circle);
+  margin-bottom: var(--space-3);
+}
+
+/* Rotate the icon-circle pastel across cards for variety. */
+.concern-card:nth-child(3n + 1) .concern-card__icon { background-color: var(--color-primary); }
+.concern-card:nth-child(3n + 2) .concern-card__icon { background-color: var(--color-secondary); }
+.concern-card:nth-child(3n)     .concern-card__icon { background-color: var(--color-secondary-2); }
+
+.concern-card__icon svg {
+  width: var(--space-4);
+  height: var(--space-4);
+  fill: none;
+  stroke: var(--color-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.concern-card__title {
+  font-size: var(--text-h3);
+  line-height: var(--leading-h3);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--space-1);
+}
+
+.concern-card__text {
+  font-size: var(--text-body);
+  color: var(--color-muted);
+}
+
+.concerns__reassurance {
+  max-width: 60ch;
+  margin: var(--space-6) auto 0;
+  text-align: center;
+  font-size: var(--text-h4);
+  line-height: var(--leading-body);
+}
+
+
+/* === APPROACH === (Section 3) */
+
+.approach {
+  background-color: var(--color-primary); /* petal pink band (warm variety) */
+}
+
+.approach__intro {
+  max-width: 60ch;
+  margin: var(--space-4) auto 0;
+  text-align: center;
+}
+
+.approach__intro p + p {
+  margin-top: var(--space-3);
+}
+
+.value-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+
+@media (min-width: 640px) {
+  .value-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .value-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.value__marker {
+  display: block;
+  width: var(--space-2);
+  height: var(--space-2);
+  border-radius: var(--radius-circle);
+  margin-bottom: var(--space-2);
+}
+
+/* Rotate the marker colour across the four values. */
+/* White cards so the values stand out against the pink band instead of
+   blending into it (matches the Concerns / Services card language). */
+.value {
+  background-color: var(--color-surface);
+  padding: var(--space-4);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.value:nth-child(4n + 1) .value__marker { background-color: var(--color-accent-2); }
+.value:nth-child(4n + 2) .value__marker { background-color: var(--color-accent); }
+.value:nth-child(4n + 3) .value__marker { background-color: var(--color-secondary-2); }
+.value:nth-child(4n)     .value__marker { background-color: var(--color-secondary); }
+
+.value__title {
+  font-size: var(--text-h4);
+  line-height: var(--leading-h4);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--space-1);
+}
+
+.value__text {
+  font-size: var(--text-body);
+  color: var(--color-muted);
+}
+
+
+/* === SERVICES === (Section 4) */
+
+.services {
+  background-color: var(--color-secondary-2);
+}
+
+.services__intro {
+  max-width: 54ch;
+  margin: var(--space-3) auto 0;
+  text-align: center;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 640px) {
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.service-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-card);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-base);
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Rounded-square icon tile (distinct from the Concerns circles). */
+.service-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-8);
+  height: var(--space-8);
+  border-radius: var(--radius-card);
+  margin-bottom: var(--space-3);
+}
+
+.service-card:nth-child(3n + 1) .service-card__icon { background-color: var(--color-secondary); }
+.service-card:nth-child(3n + 2) .service-card__icon { background-color: var(--color-primary); }
+.service-card:nth-child(3n)     .service-card__icon { background-color: var(--color-secondary-2); }
+
+.service-card__icon svg {
+  width: var(--space-4);
+  height: var(--space-4);
+  fill: none;
+  stroke: var(--color-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.service-card__title {
+  font-size: var(--text-h3);
+  line-height: var(--leading-h3);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--space-1);
+}
+
+.service-card__text {
+  font-size: var(--text-body);
+  color: var(--color-muted);
+}
+
+
+/* === HOW IT WORKS === (Section 5) */
+/* Mint band. The only numbered section: big counter-driven numerals,
+   alternating tangerine / green. */
+
+.how-it-works {
+  background-color: var(--color-secondary);
+}
+
+.steps {
+  counter-reset: step;
+  list-style: none; /* suppress native ol markers; the styled "01" counter is the only number */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .steps {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.step {
+  counter-increment: step;
+}
+
+.step__num {
+  display: block;
+  font-size: var(--text-display);
+  line-height: 1;
+  font-weight: var(--weight-bold);
+  color: var(--color-accent);
+  margin-bottom: var(--space-2);
+}
+
+.step:nth-child(even) .step__num {
+  color: var(--color-accent-2);
+}
+
+.step__num::before {
+  content: counter(step, decimal-leading-zero);
+}
+
+.step__title {
+  font-size: var(--text-h3);
+  line-height: var(--leading-h3);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--space-1);
+}
+
+.step__text {
+  font-size: var(--text-body);
+  color: var(--color-muted);
+}
+
+
+/* === MEET VISHWA === (Section 6) */
+
+.meet-vishwa {
+  background-color: var(--color-bg); /* cream; position 3 in the band alternation */
+}
+
+.vishwa {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .vishwa {
+    grid-template-columns: minmax(0, 340px) 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+}
+
+/* Circular founder portrait (brand-direction.md §4). Replace the
+   placeholder <svg> with <img class="vishwa__photo-img" ...> when the
+   real photo is supplied - [NEEDS CLIENT INPUT], content-final.md #16. */
+.vishwa__photo {
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-circle);
+  overflow: hidden;
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.vishwa__photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vishwa__photo svg {
+  width: 40%;
+  height: 40%;
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.vishwa__eyebrow {
+  font-size: var(--text-eyebrow);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-2);
+}
+
+.vishwa__title {
+  font-size: var(--text-h2);
+  line-height: var(--leading-h2);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--space-3);
+}
+
+.vishwa__title .accent {
+  color: var(--color-accent);
+}
+
+.vishwa__bio p + p {
+  margin-top: var(--space-3);
+}
+
+/* Full-width credentials band below the photo/text row, two columns on
+   desktop, so the qualifications don't overload the right-hand text column. */
+.vishwa__creds {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  padding: var(--space-4);
+  border-radius: var(--radius-card);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+@media (min-width: 768px) {
+  .vishwa__creds {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2) var(--space-6);
+  }
+}
+
+.vishwa__cred {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--text-small);
+  line-height: var(--leading-small);
+}
+
+.vishwa__cred svg {
+  flex-shrink: 0;
+  width: var(--space-2);
+  height: var(--space-2);
+  margin-top: var(--space-half);
+  fill: none;
+  stroke: var(--color-accent-2);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.vishwa__cta {
+  margin-top: var(--space-4);
+}
+
+
+/* === TESTIMONIALS === (Section 7) */
+
+.testimonials {
+  background-color: var(--color-primary); /* petal pink band (warm variety) */
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 1024px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: var(--space-4);
+  border-radius: var(--radius-card);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.testimonial__mark {
+  font-size: var(--text-display);
+  line-height: 1;
+  font-weight: var(--weight-bold);
+  color: var(--color-accent);
+}
+
+.testimonial:nth-child(3n + 2) .testimonial__mark { color: var(--color-accent-2); }
+.testimonial:nth-child(3n)     .testimonial__mark { color: var(--color-primary); }
+
+.testimonial__quote {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+.testimonial__quote p {
+  margin: 0;
+}
+
+.testimonial__cite {
+  margin-top: auto;
+  font-style: normal;
+}
+
+.testimonial__name {
+  display: block;
+  font-weight: var(--weight-bold);
+}
+
+.testimonial__loc {
+  display: block;
+  font-size: var(--text-small);
+  color: var(--color-muted);
+}
+
+
+/* === FAQ === (Section 8) */
+
+.faq {
+  background-color: var(--color-secondary-2);
+}
+
+.faq-list {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 68ch;
+  margin: var(--space-6) auto 0;
+}
+
+.faq-item {
+  border-radius: var(--radius-card);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.faq-item__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  cursor: pointer;
+  list-style: none;
+  font-size: var(--text-h4);
+  line-height: var(--leading-h4);
+  font-weight: var(--weight-bold);
+}
+
+.faq-item__q::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item__icon {
+  flex-shrink: 0;
+  width: var(--space-3);
+  height: var(--space-3);
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: var(--transition-base);
+}
+
+.faq-item[open] .faq-item__icon {
+  transform: rotate(180deg);
+}
+
+.faq-item__a {
+  padding: 0 var(--space-4) var(--space-4);
+  color: var(--color-muted);
+}
+
+.faq-item__a p {
+  margin: 0;
+}
+
+
+/* === CONTACT === (Section 9) */
+/* Cream background (page default), before the periwinkle footer. */
+
+.contact__intro {
+  max-width: 54ch;
+  margin: var(--space-3) auto var(--space-6);
+  text-align: center;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 1024px) {
+  .contact__grid {
+    grid-template-columns: 3fr 2fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+}
+
+.contact-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+@media (min-width: 640px) {
+  .contact-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-field {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.form-field--full {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+}
+
+.form-field__optional {
+  font-weight: var(--weight-regular);
+  color: var(--color-muted);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  color: var(--color-ink);
+  padding: var(--space-2);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-input);
+}
+
+.form-field textarea {
+  resize: vertical;
+}
+
+.form-field input:focus-visible,
+.form-field select:focus-visible,
+.form-field textarea:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.contact-form .btn {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+
+/* Details card */
+.contact__details {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius-card);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.contact__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.contact__item svg {
+  flex-shrink: 0;
+  width: var(--space-3);
+  height: var(--space-3);
+  margin-top: var(--space-half);
+  fill: none;
+  stroke: var(--color-accent-2);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact__item-label {
+  display: block;
+  font-weight: var(--weight-bold);
+}
+
+.contact__item a {
+  text-decoration: none;
+}
+
+.contact__item a:hover,
+.contact__item a:focus-visible {
+  color: var(--color-accent);
+}
+
+.contact__map {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 0;
+  border-radius: var(--radius-card);
+}
+
+.contact__directions {
+  display: inline-block;
+  margin-top: var(--space-1);
+  font-weight: var(--weight-medium);
+  color: var(--color-accent);
+}
+
+
+/* === FOOTER === */
+
+.site-footer {
+  background-color: var(--color-secondary-2);
+  padding-block: var(--space-8) var(--space-4);
+}
+
+.site-footer__closing {
+  font-size: var(--text-h3);
+  line-height: var(--leading-h3);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--space-6);
+}
+
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .site-footer__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+}
+
+.site-footer__heading {
+  font-size: var(--text-eyebrow);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.site-footer__list {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.site-footer__list a {
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+.site-footer__list a:hover,
+.site-footer__list a:focus-visible {
+  color: var(--color-accent);
+}
+
+.site-footer__credentials {
+  margin-top: var(--space-2);
+  font-size: var(--text-small);
+  line-height: var(--leading-small);
+  color: var(--color-muted);
+}
+
+.site-footer__disclaimer {
+  font-size: var(--text-small);
+  line-height: var(--leading-small);
+  color: var(--color-muted);
+  border-top: 1px solid var(--neutral-0);
+  padding-top: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.site-footer__copyright {
+  font-size: var(--text-small);
+  line-height: var(--leading-small);
+  color: var(--color-muted);
+}
+
+
+/* === REDUCED MOTION === */
+
+/* Every later section inherits this: no transitions, no animations, no
+   smooth scrolling for users who ask the OS for reduced motion. Keep this
+   block last so it wins the cascade. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
