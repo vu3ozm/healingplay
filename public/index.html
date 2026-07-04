@@ -1,89 +1,534 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Healing Play | Play and creative arts therapy for children, Ahmedabad</title>
+  <meta name="description" content="The Healing Play is Vishva Choksi's play and creative arts therapy practice in Ahmedabad, helping children aged 4 to 14 work through emotions, behaviour, and life's hard moments through play.">
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/12.15.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/12.15.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/12.15.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/12.15.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/12.15.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/12.15.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/12.15.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/12.15.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/12.15.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/12.15.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+  <!-- Fonts per brand-direction.md §3: DM Sans (headlines/body/UI) + Chewy (accent display words) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Chewy&display=swap" rel="stylesheet">
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main">
+      <a href="#hero" class="nav__logo">The Healing Play</a>
+
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__links">
+          <li><a class="nav__link" href="#meet-vishwa">Therapist</a></li>
+          <li><a class="nav__link" href="#services">Services</a></li>
+          <li><a class="nav__link" href="#how-it-works">How it works</a></li>
+          <li><a class="nav__link" href="#faq">FAQ</a></li>
+        </ul>
+        <a href="#contact" class="btn btn--primary nav__cta">Book a consultation</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Section order per content-final.md. Each section is an empty anchor
+         in this shell pass; content is built in later passes. -->
+    <!-- Section 1 - Hero -->
+    <section id="hero" aria-label="Welcome" class="hero">
+      <div class="container hero__inner">
+        <!-- [NEEDS CLIENT INPUT] "200+ Play Hours" figure is unverified - see content-final.md checklist #4 -->
+        <p class="hero__badge">Internationally certified play therapist</p>
+        <h1 class="hero__title">A safe, joyful space for your child to heal through <span class="accent">play</span>.</h1>
+        <p class="hero__subtitle">The Healing Play is Vishva Choksi's play and creative arts therapy practice in Ahmedabad, helping children aged 4 to 14 work through emotions, behaviour, and life's hard moments in the language they know best: play.</p>
+        <a href="#contact" class="btn btn--primary hero__cta">Book a consultation</a>
+      </div>
+    </section>
+    <!-- Section 2 - Is This for Your Child? -->
+    <section id="concerns" aria-label="Is this for your child?" class="concerns">
+      <div class="container">
+        <h2 class="section-title">Does any of this feel familiar?</h2>
+
+        <ul class="concern-grid">
+          <li class="concern-card">
+            <span class="concern-card__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </span>
+            <h3 class="concern-card__title">Big feelings &amp; behaviour</h3>
+            <p class="concern-card__text">Meltdowns, anger, or reactions that feel bigger than the moment.</p>
+          </li>
+
+          <li class="concern-card">
+            <span class="concern-card__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+            </span>
+            <h3 class="concern-card__title">Worry &amp; anxiety</h3>
+            <p class="concern-card__text">Clinginess, school-morning tummy aches, fears that won't settle.</p>
+          </li>
+
+          <li class="concern-card">
+            <span class="concern-card__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </span>
+            <h3 class="concern-card__title">Autism spectrum (ASD)</h3>
+            <p class="concern-card__text">Support for children on the spectrum, built around how your child connects and plays.</p>
+          </li>
+
+          <li class="concern-card">
+            <span class="concern-card__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </span>
+            <h3 class="concern-card__title">Attention &amp; focus (ADHD)</h3>
+            <p class="concern-card__text">Restlessness, impulsivity, or focus struggles at home and school.</p>
+          </li>
+
+          <li class="concern-card">
+            <span class="concern-card__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>
+            </span>
+            <h3 class="concern-card__title">Social &amp; school struggles</h3>
+            <p class="concern-card__text">Trouble making friends, joining in, or coping with school demands.</p>
+          </li>
+
+          <li class="concern-card">
+            <span class="concern-card__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23 12a11.05 11.05 0 0 0-22 0zM18 19a3 3 0 0 1-6 0v-7"/></svg>
+            </span>
+            <h3 class="concern-card__title">Hard life moments</h3>
+            <p class="concern-card__text">A loss, a move, family changes, or anything your child is quietly carrying.</p>
+          </li>
+        </ul>
+
+        <p class="concerns__reassurance">If you nodded at any of these, none of it means something is &ldquo;wrong&rdquo; with your child. It means they're carrying something they don't yet have the words for. Play gives them another language.</p>
+      </div>
+    </section>
+    <!-- Meet Vishva (placed early to introduce the therapist) -->
+    <section id="meet-vishwa" aria-label="Meet Vishva" class="meet-vishwa">
+      <div class="container">
+        <div class="vishwa">
+          <!-- Photo supplied by client, saved to assets/vishva.jpg. -->
+          <figure class="vishwa__photo">
+            <img class="vishwa__photo-img" src="assets/vishva.jpg" alt="Vishva Choksi, play and creative arts therapist" width="340" height="340">
+          </figure>
+
+          <div class="vishwa__text">
+            <p class="vishwa__eyebrow">Meet your therapist</p>
+            <h2 class="vishwa__title">Hi, I'm <span class="accent">Vishva</span>.</h2>
+            <div class="vishwa__bio">
+              <p>I'm a play and creative arts therapist, certified through Play Therapy UK and Play Therapy International. Every day I get to sit on the floor with children and watch them work out, through play, what they can't yet put into words.</p>
+              <p>Much of my work is with children on the autism spectrum, with ADHD, and with special educational needs, alongside their parents. When you walk into The Healing Play, you won't find anything clinical or intimidating, just a warm room, plenty of toys and art materials, and someone firmly on your child's side.</p>
+            </div>
+            <a href="#contact" class="btn btn--primary vishwa__cta">Book a consultation</a>
+          </div>
+        </div>
+
+        <ul class="vishwa__creds">
+          <li class="vishwa__cred">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Post Graduate Diploma in Play &amp; Creative Arts Therapy, PTUK / PTI (internationally certified practising play therapist)</span>
+          </li>
+          <li class="vishwa__cred">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Post Graduate Certificate in Therapeutic Play Skills, PTUK / PTI</span>
+          </li>
+          <li class="vishwa__cred">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>MA in Education (Creative Arts), University of Exeter, UK</span>
+          </li>
+          <li class="vishwa__cred">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Post Graduate Diploma in Expressive Arts Therapy, East West Center of Counseling, Chennai</span>
+          </li>
+          <li class="vishwa__cred">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>BA Psychology, St. Xavier's College, Gujarat University</span>
+          </li>
+          <li class="vishwa__cred">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Diploma in Child Psychology &amp; Art Therapy</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Section 3 - What Is Play Therapy? / Our Approach -->
+    <section id="approach" aria-label="What is play therapy?" class="approach">
+      <div class="container">
+        <h2 class="section-title">Play is how children <span class="accent">speak</span>.</h2>
+
+        <div class="approach__intro">
+          <p>Children rarely sit down and talk about what's troubling them. They show it, in how they play, draw, build, and pretend. Play therapy uses that natural language: in a room designed for them, with a trained therapist alongside, children express what they're carrying, make sense of it, and slowly set it down.</p>
+          <p>At The Healing Play, sessions also draw on the creative arts, from art and music to storytelling, drama, and movement, so every child can find the medium that fits them. For children on the autism spectrum or with ADHD, this flexibility matters most of all: therapy adapts to your child, never the other way around.</p>
+        </div>
+
+        <ul class="value-grid">
+          <li class="value">
+            <span class="value__marker"></span>
+            <h3 class="value__title">Your child leads</h3>
+            <p class="value__text">There's no &ldquo;right way&rdquo; to play here. Your child chooses, and that choice is where the healing starts.</p>
+          </li>
+          <li class="value">
+            <span class="value__marker"></span>
+            <h3 class="value__title">Safety comes first</h3>
+            <p class="value__text">The playroom is a judgement-free space, and what your child shares through play is treated with care and confidentiality.</p>
+          </li>
+          <li class="value">
+            <span class="value__marker"></span>
+            <h3 class="value__title">Parents are partners</h3>
+            <p class="value__text">Vishva works with parents and families, not just children. Regular parent conversations are built into the process.</p>
+          </li>
+          <li class="value">
+            <span class="value__marker"></span>
+            <h3 class="value__title">Every child, whole</h3>
+            <p class="value__text">Home, school, friendships, development: we look at the full picture, and the little person in the middle of it.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- Section 4 - Services -->
+    <section id="services" aria-label="Services" class="services">
+      <div class="container">
+        <h2 class="section-title">How we can <span class="accent">help</span></h2>
+        <p class="services__intro">Every child arrives with a different story, so every plan is built around your child, not a fixed program.</p>
+
+        <ul class="service-grid">
+          <li class="service-card">
+            <span class="service-card__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+            </span>
+            <h3 class="service-card__title">Child-centred play therapy</h3>
+            <p class="service-card__text">One-to-one sessions for ages 4&ndash;14, where your child leads the play and healing follows at their pace.</p>
+          </li>
+
+          <li class="service-card">
+            <span class="service-card__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </span>
+            <h3 class="service-card__title">Creative and expressive arts therapy</h3>
+            <p class="service-card__text">Art, music, storytelling, and drama for children who express themselves better through making than talking.</p>
+          </li>
+
+          <li class="service-card">
+            <span class="service-card__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            </span>
+            <h3 class="service-card__title">Support for neurodivergent children</h3>
+            <p class="service-card__text">Therapy adapted for children on the autism spectrum, with ADHD, or with special educational needs.</p>
+          </li>
+
+          <li class="service-card">
+            <span class="service-card__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+            <h3 class="service-card__title">Parent and family counselling</h3>
+            <p class="service-card__text">Sessions for you: understanding your child's inner world, and what actually helps at home.</p>
+          </li>
+
+          <li class="service-card">
+            <span class="service-card__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <h3 class="service-card__title">Social-emotional learning groups</h3>
+            <p class="service-card__text">Small-group sessions building self-awareness, friendship skills, and emotional vocabulary through games and art.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- Section 5 - How It Works -->
+    <section id="how-it-works" aria-label="How it works" class="how-it-works">
+      <div class="container">
+        <h2 class="section-title">Getting started is <span class="accent">simple</span></h2>
+
+        <ol class="steps">
+          <li class="step">
+            <span class="step__num" aria-hidden="true"></span>
+            <h3 class="step__title">Say hello</h3>
+            <p class="step__text">Fill in the enquiry form, or message us on WhatsApp. We'll set up a relaxed first conversation, no commitment, just listening.</p>
+          </li>
+
+          <li class="step">
+            <span class="step__num" aria-hidden="true"></span>
+            <h3 class="step__title">Parent consultation</h3>
+            <p class="step__text">Before any sessions begin, Vishva meets you (the parents) to understand your child's story, your concerns, and your hopes.</p>
+          </li>
+
+          <li class="step">
+            <span class="step__num" aria-hidden="true"></span>
+            <h3 class="step__title">Play sessions begin</h3>
+            <!-- [NEEDS CLIENT INPUT] session length in minutes - content-final.md checklist #8. Wording avoids stating an unverified duration. -->
+            <p class="step__text">Your child starts regular sessions in the playroom, usually once a week, at a rhythm that suits them.</p>
+          </li>
+
+          <li class="step">
+            <span class="step__num" aria-hidden="true"></span>
+            <h3 class="step__title">We review together</h3>
+            <p class="step__text">At regular intervals we sit down with you, share what we're seeing, and shape what comes next. You'll always know how your child is doing.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+    <!-- Section 7 - What Parents Say -->
+    <!-- [NEEDS CLIENT INPUT] These three quotes are from the archived 2024 site, lightly edited
+         from plural ("our therapists/team") to fit a solo practice. Confirm permission still
+         stands, approve the edits, and confirm attribution style - content-final.md #11. -->
+    <section id="testimonials" aria-label="What parents say" class="testimonials">
+      <div class="container">
+        <h2 class="section-title">From the <span class="accent">families</span> we've played with</h2>
+
+        <div class="testimonials-grid">
+          <figure class="testimonial">
+            <span class="testimonial__mark" aria-hidden="true">&ldquo;</span>
+            <blockquote class="testimonial__quote">
+              <p>I was initially hesitant about the idea of play therapy for my son, but seeing the positive changes in his behavior and the way he expresses himself after just a few sessions has made me a firm believer. The Healing Play creates a nurturing and safe environment where children can freely explore their feelings. The transformation in our home life has been noticeable. I can't recommend them highly enough!</p>
+            </blockquote>
+            <figcaption class="testimonial__cite">
+              <span class="testimonial__name">Krishna</span>
+              <span class="testimonial__loc">Ahmedabad</span>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial">
+            <span class="testimonial__mark" aria-hidden="true">&ldquo;</span>
+            <blockquote class="testimonial__quote">
+              <p>Our daughter has always been a bit reserved and struggled with her emotions. Since starting play therapy at The Healing Play, we've seen her come out of her shell and communicate more openly about her feelings. A heartfelt thank you!</p>
+            </blockquote>
+            <figcaption class="testimonial__cite">
+              <span class="testimonial__name">Kshitij Sharma</span>
+              <span class="testimonial__loc">Ahmedabad</span>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial">
+            <span class="testimonial__mark" aria-hidden="true">&ldquo;</span>
+            <blockquote class="testimonial__quote">
+              <p>The play therapy sessions have been instrumental in helping our child cope with some challenging life events. They use play as a medium, making therapy sessions fun and engaging while addressing core issues.</p>
+            </blockquote>
+            <figcaption class="testimonial__cite">
+              <span class="testimonial__name">Brinda</span>
+              <span class="testimonial__loc">Designer, Ahmedabad</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <!-- Section 8 - FAQ -->
+    <section id="faq" aria-label="Frequently asked questions" class="faq">
+      <div class="container">
+        <h2 class="section-title">Questions parents <span class="accent">always</span> ask</h2>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary class="faq-item__q">How do I know if my child needs play therapy?
+              <svg class="faq-item__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-item__a"><p>There's no test you need to pass to reach out. If something about your child's behaviour, mood, or reactions has been worrying you for more than a few weeks, or a teacher has raised a concern, that's reason enough for a conversation. The first consultation is exactly for figuring this out together.</p></div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-item__q">What actually happens in a session?
+              <svg class="faq-item__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-item__a"><p>Your child and Vishva spend the session in the playroom, playing, drawing, building, telling stories. It looks simple from the outside, but the toys and art materials are chosen so children can express and work through feelings safely. There's no pressure to talk about anything.</p></div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-item__q">Can play therapy help if my child is on the autism spectrum, or has ADHD?
+              <svg class="faq-item__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-item__a"><p>Yes, this is a core part of Vishva's training and daily work. Play and creative arts therapy doesn't demand sitting still or talking things through; it meets your child in whatever way they naturally connect, and builds from there. Sessions are adapted to your child's sensory needs, interests, and pace.</p></div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-item__q">Do I stay with my child during sessions?
+              <svg class="faq-item__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-item__a"><p>For most children, sessions are one-to-one with Vishva, and that privacy is part of what makes the playroom feel safe. You'll be nearby, and for younger or more anxious children we ease into this gently. You'll never be pushed faster than your child is ready for.</p></div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-item__q">How many sessions will my child need?
+              <svg class="faq-item__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-item__a"><p>It genuinely varies: some children need a handful of sessions, others benefit from longer support. What we promise: you'll never be left guessing. We review progress with you regularly, and you'll always know why we're continuing or winding down.</p></div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-item__q">What ages do you work with?
+              <svg class="faq-item__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-item__a"><p>Children and young people from 4 to 14 years old. If your child is just outside this range, get in touch anyway, and we'll point you in the right direction.</p></div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-item__q">What should I tell my child before the first session?
+              <svg class="faq-item__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-item__a"><p>Keep it simple and honest: &ldquo;You're going to meet Vishva. She has a room full of toys and art things, and you can play however you like.&rdquo; No need to mention problems or fixing anything. The playroom does that work gently.</p></div>
+          </details>
+
+          <!-- [NEEDS CLIENT INPUT] Fees - content-final.md #12. Using the safe "discussed in consultation"
+               phrasing; replace with an actual per-session fee if Vishva prefers to publish one. -->
+          <details class="faq-item">
+            <summary class="faq-item__q">What does it cost?
+              <svg class="faq-item__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-item__a"><p>Fees are discussed in your first consultation, once we understand what your child needs. We'll always be clear and upfront, and there are no hidden charges.</p></div>
+          </details>
+
+          <!-- Area (Bodakdev) and coordinates confirmed from the Google Business listing. Hours confirmed by client: Mon to Sat, 11am to 7pm.
+               [NEEDS CLIENT INPUT] exact street address / building / pincode still required. -->
+          <details class="faq-item">
+            <summary class="faq-item__q">Where are you located, and what are your timings?
+              <svg class="faq-item__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-item__a"><p>We're based in Bodakdev, Ahmedabad, and you'll find directions in the contact section below. Sessions run Monday to Saturday, 11 am to 7 pm, with Sundays off.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+    <!-- Section 9 - Contact / Book a consultation -->
+    <section id="contact" aria-label="Contact and booking" class="contact">
+      <div class="container">
+        <h2 class="section-title">Let's start with a <span class="accent">conversation</span></h2>
+        <p class="contact__intro">You don't need to have it all figured out before you reach out. Tell us a little about what you're seeing, and we'll take it from there.</p>
+
+        <div class="contact__grid">
+          <!-- [NEEDS CLIENT INPUT] This form has no live endpoint yet. Wire `action`/`method`
+               (Formspree, a backend, or email delivery) once decided - content-final.md #14. -->
+          <form class="contact-form" action="#" method="post" novalidate>
+            <div class="form-field">
+              <label for="cf-name">Your name</label>
+              <input type="text" id="cf-name" name="name" autocomplete="name" required>
+            </div>
+
+            <div class="form-field">
+              <label for="cf-phone">Phone number</label>
+              <input type="tel" id="cf-phone" name="phone" autocomplete="tel" required>
+            </div>
+
+            <div class="form-field">
+              <label for="cf-email">Email</label>
+              <input type="email" id="cf-email" name="email" autocomplete="email" required>
+            </div>
+
+            <div class="form-field">
+              <label for="cf-age">Your child's age</label>
+              <input type="text" id="cf-age" name="child_age" inputmode="numeric">
+            </div>
+
+            <div class="form-field form-field--full">
+              <label for="cf-time">Best time to call</label>
+              <select id="cf-time" name="best_time">
+                <option value="">No preference</option>
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="evening">Evening</option>
+              </select>
+            </div>
+
+            <div class="form-field form-field--full">
+              <label for="cf-message">What's on your mind? <span class="form-field__optional">(optional)</span></label>
+              <textarea id="cf-message" name="message" rows="4"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary">Book a consultation</button>
+          </form>
+
+          <div class="contact__details">
+            <!-- [NEEDS CLIENT INPUT] The archived site listed +91 91577 42933; Vishva's CV lists
+                 +91 98252 42933. Confirm the practice line - content-final.md #13. -->
+            <p class="contact__item">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>
+                <span class="contact__item-label">Call / WhatsApp</span>
+                <a href="tel:+919157742933">+91 91577 42933</a>
+              </span>
+            </p>
+
+            <!-- [NEEDS CLIENT INPUT] Confirm this email is still active - content-final.md #13. -->
+            <p class="contact__item">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>
+                <span class="contact__item-label">Write</span>
+                <a href="mailto:thehealingplay@gmail.com">thehealingplay@gmail.com</a>
+              </span>
+            </p>
+
+            <!-- Area confirmed as Bodakdev from the Google listing. [NEEDS CLIENT INPUT] exact street address, building/unit, and pincode still required, content-final.md #2. -->
+            <p class="contact__item">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>
+                <span class="contact__item-label">Visit</span>
+                Bodakdev, Ahmedabad
+              </span>
+            </p>
+
+            <!-- Hours confirmed by client. -->
+            <p class="contact__item">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>
+                <span class="contact__item-label">Hours</span>
+                Monday to Saturday, 11 am to 7 pm. Sunday closed
+              </span>
+            </p>
+
+            <!-- Map pinned to the Google listing coordinates (23.033898, 72.5049535). -->
+            <iframe class="contact__map" title="The Healing Play location on Google Maps" src="https://www.google.com/maps?q=23.033898,72.5049535&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <a class="contact__directions" href="https://maps.app.goo.gl/MMCrmiKf2yDqBKc26" target="_blank" rel="noopener">Get directions</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="site-footer__closing">The Healing Play: where healing looks a lot like playing.</p>
+
+      <div class="site-footer__grid">
+        <div class="site-footer__col">
+          <h2 class="site-footer__heading">Contact</h2>
+          <ul class="site-footer__list">
+            <li>Call / WhatsApp: <a href="tel:+919157742933">+91 91577 42933</a></li>
+            <li>Email: <a href="mailto:thehealingplay@gmail.com">thehealingplay@gmail.com</a></li>
+            <!-- [NEEDS CLIENT INPUT] exact street address / pincode still required; area confirmed as Bodakdev. -->
+            <li>Bodakdev, Ahmedabad</li>
+            <li>Hours: Monday to Saturday, 11 am to 7 pm. Sunday closed</li>
+          </ul>
+        </div>
+
+        <div class="site-footer__col">
+          <h2 class="site-footer__heading">Explore</h2>
+          <ul class="site-footer__list">
+            <li><a href="#meet-vishwa">Therapist</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#how-it-works">How it works</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="site-footer__col">
+          <h2 class="site-footer__heading">Follow</h2>
+          <ul class="site-footer__list">
+            <li><a href="https://www.instagram.com/thehealingplay/" rel="noopener" target="_blank">Instagram: @thehealingplay</a></li>
+          </ul>
+          <p class="site-footer__credentials">Vishva Choksi, play &amp; creative arts therapist (PTUK / PTI)</p>
+        </div>
+      </div>
+
+      <p class="site-footer__disclaimer">Play therapy supports children's emotional wellbeing. It is not a substitute for medical, psychiatric, or psychological diagnosis or treatment. If your child needs urgent help, please contact your doctor or the nearest hospital.</p>
+      <p class="site-footer__copyright">© 2026 The Healing Play. All rights reserved.</p>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+  </footer>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
+  <script src="main.js"></script>
+</body>
 </html>

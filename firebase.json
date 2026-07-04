@@ -1,8 +1,8 @@
 {
   "hosting": {
+    "site": "thehealingplay",
     "public": "public",
     "ignore": [
-      "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
