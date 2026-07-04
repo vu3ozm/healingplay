@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="The Healing Play">
+  <rect width="64" height="64" rx="16" fill="#FBF1EA"/>
+  <path d="M32 50S12 38.5 12 25.5C12 18.6 17.6 13 24.5 13c4.3 0 8 2.2 10.1 5.5C36.7 15.2 40.4 13 44.7 13 51.4 13 57 18.6 57 25.5 57 38.5 37 50 37 50" transform="translate(-2.5 0)" fill="#F5521D"/>
+  <circle cx="26" cy="27" r="3" fill="#FBF1EA"/>
+  <circle cx="38" cy="27" r="3" fill="#FBF1EA"/>
+</svg>
